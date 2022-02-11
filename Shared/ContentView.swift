@@ -16,7 +16,8 @@ struct ContentView: View {
     @State var guessString = "23458"
     @State var totalGuessString = "0"
     @State var piString = "0.0"
-    
+    @State var n = 0.0 // initialize n for user input
+    @State var nString = "10" //take in user input?
     
     // Setup the GUI to monitor the data from the Monte Carlo Integral Calculator
     @ObservedObject var monteCarlo = MonteCarloCircle(withData: true)
@@ -27,24 +28,24 @@ struct ContentView: View {
             
             VStack{
                 
-                VStack(alignment: .center) {
-                    Text("Guesses")
+                VStack(alignment: .center) { //vertically stacks text and textfield
+                    Text("Guesses") //label for guesses  field
                         .font(.callout)
                         .bold()
-                    TextField("# Guesses", text: $guessString)
+                    TextField("# Guesses", text: $guessString) //Guesses field
                         .padding()
                 }
                 .padding(.top, 5.0)
                 
-                VStack(alignment: .center) {
-                    Text("Total Guesses")
+                VStack(alignment: .center) { //vertically stacks text and textfield
+                    Text("Total Guesses") //label for total guesses field
                         .font(.callout)
                         .bold()
-                    TextField("# Total Guesses", text: $totalGuessString)
+                    TextField("# Total Guesses", text: $totalGuessString) //total  guesses field
                         .padding()
                 }
                 
-                VStack(alignment: .center) {
+                VStack(alignment: .center) { //vertically stacks text and textfield
                     Text("π")
                         .font(.callout)
                         .bold()
@@ -52,8 +53,16 @@ struct ContentView: View {
                         .padding()
                 }
                 
+                VStack(alignment: .center) { //vertically stacks text and textfield
+                    Text("n")
+                        .font(.callout)
+                        .bold()
+                    TextField("# n", text: $nString)
+                        .padding()
+                }
+                
                 Button("Cycle Calculation", action: {Task.init{await self.calculatePi()}})
-                    .padding()
+                    .padding() 
                     .disabled(monteCarlo.enableButton == false)
                 
                 Button("Clear", action: {self.clear()})
