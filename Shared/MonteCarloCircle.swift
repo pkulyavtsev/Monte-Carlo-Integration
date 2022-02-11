@@ -59,7 +59,7 @@ class MonteCarloCircle: NSObject, ObservableObject {
         
         ///Calculates the value of π from the area of a unit circle
         
-        pi = totalIntegral/Double(totalGuesses) * boundingBoxCalculator.calculateSurfaceArea(numberOfSides: 2, lengthOfSide1: 2.0*radius, lengthOfSide2: 2.0*radius, lengthOfSide3: 0.0)
+        pi = totalIntegral/Double(totalGuesses) * boundingBoxCalculator.calculateSurfaceArea(numberOfSides: 2, lengthOfSide1: 1.0, lengthOfSide2: 1.0, lengthOfSide3: 0.0)
         
         await updatePiString(text: "\(pi)")
         
@@ -92,14 +92,15 @@ class MonteCarloCircle: NSObject, ObservableObject {
             /* Calculate 2 random values within the box */
             /* Determine the distance from that point to the origin */
             /* If the distance is less than the unit radius count the point being within the Unit Circle */
-            point.xPoint = Double.random(in: -radius...radius)
-            point.yPoint = Double.random(in: -radius...radius)
+            point.xPoint = Double.random(in: 0.0...1.0)
+            point.yPoint = Double.random(in: 0.0...1.0)
             
             radiusPoint = sqrt(pow(point.xPoint,2.0) + pow(point.yPoint,2.0))
             
+            let checkValue = exp(-point.xPoint)
             
             // if inside the circle add to the number of points in the radius
-            if((radius - radiusPoint) >= 0.0){
+            if((checkValue - point.yPoint) >= 0.0){
                 pointsInRadius += 1.0
                 
                 
