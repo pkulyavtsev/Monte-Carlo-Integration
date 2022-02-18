@@ -125,6 +125,7 @@ class MonteCarloCircle: NSObject, ObservableObject {
             
             let checkValue = point.xPoint ///wall is going from 0-5m since it is 5m thick and 5 m high
             ///every time it iterates it needs to decrease by 10%
+            ///
             
             // if inside the circle add to the number of points in the radius
             if((checkValue) >= 5.0){ //check if X >5m, that means it outside the wall. Woohoo.
