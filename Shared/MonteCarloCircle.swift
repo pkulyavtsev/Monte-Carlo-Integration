@@ -81,28 +81,54 @@ class MonteCarloCircle: NSObject, ObservableObject {
         var pointsInRadius = 0.0
         var integral = 0.0
         var point = (xPoint: 0.0, yPoint: 0.0)
-        var radiusPoint = 0.0
+        var radiusPoint = 0.0 //i dont remember what this is lol
+        var height = 4.0//Double.random(in: 0.0...5.0) //gives random height between 0 and 5 meters...
+        var initialEnergy = 1.0 //Use a normalized value, like 1, then take 10 percent off each time
+        var currentEnergy = 0.0 // really not sure why two seperate but whatever
+        var lossEnergy = 0.10 //this is the % lost each interaction...woohoo
+        var radius = 1.0 //radius of each depth of penetration is is is 1...for now
+        var theta = Double.random(in: 0.0...(2*Double.pi)) ///uhhh between 0 and 2 pi radians...yes this is math
+        //STOPPING POINT::::::: NEXT WE WANT TO TAKE AWAY ENERGY AND BOUNCE
         
         var newInsidePoints : [(xPoint: Double, yPoint: Double)] = []
         var newOutsidePoints : [(xPoint: Double, yPoint: Double)] = []
         
+       
+        currentEnergy = initialEnergy
+        //particle hits the wall...travels 1m parralelll to x axis
+        point.xPoint =  point.xPoint + radius //given condition that parallel and travels 1 radius before next event
+        currentEnergy -= lossEnergy //subtracts lossEnergy from currrentEnergy due to initial hit
         
-        while numberOfGuesses < maxGuesses {
+        while currentEnergy > 0 && point.xPoint < 5 && point.yPoint > 0 && point.yPoint < 5 { //incorporate breaks, perhaps
+            
+            //when x greater than 5 or when Energy = 0
             
             /* Calculate 2 random values within the box */
             /* Determine the distance from that point to the origin */
             /* If the distance is less than the unit radius count the point being within the Unit Circle */
-            point.xPoint = Double.random(in: 0.0...1.0)
-            point.yPoint = Double.random(in: 0.0...1.0)
             
-            radiusPoint = sqrt(pow(point.xPoint,2.0) + pow(point.yPoint,2.0))
+            //after height, travels 1 m (inc x by 1, y by 0) this was calculated outside the while loop woohooo......
+            // particle is at (1,h)
+            //need to take off 10% from initial energy
+            // next generate a x and y that are within 1 unit of the previous point
+            // use theta as rand, this r is permanently 1 (until otherwise specified)
+            // maybe do a while loop???????
             
-            let checkValue = exp(-point.xPoint)
+            point.xPoint = point.xPoint + (radius * cos(theta))
+                                //Double.random(in: 0.0...1.0) //Chooses X
+            point.yPoint = point.yPoint + (radius * sin(theta))
+                                //sqrt(1 - pow(point.xPoint, 2)) //Chooses random  Y, is X the right X??
+            
+            radiusPoint = sqrt(pow(point.xPoint,2.0) + pow(point.yPoint,2.0)) //i forgot what this is too
+            
+            theta = Double.random(in: 0.0...(2*Double.pi))
+            
+            let checkValue = point.xPoint ///wall is going from 0-5m since it is 5m thick and 5 m high
+            ///every time it iterates it needs to decrease by 10%
             
             // if inside the circle add to the number of points in the radius
-            if((checkValue - point.yPoint) >= 0.0){
+            if((checkValue) >= 5.0){ //check if X >5m, that means it outside the wall. Woohoo.
                 pointsInRadius += 1.0
-                
                 
                 newInsidePoints.append(point)
                

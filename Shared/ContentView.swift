@@ -53,6 +53,13 @@ struct ContentView: View {
                         .padding()
                 }
                 
+                VStack(alignment: .center) { //vertically stacks text and textfield
+                    Text("Height")
+                        .font(.callout)
+                        .bold()
+                    TextField("0m", text: $piString)
+                        .padding()
+                }
                 
                 Button("Cycle Calculation", action: {Task.init{await self.calculatePi()}})
                     .padding() 
