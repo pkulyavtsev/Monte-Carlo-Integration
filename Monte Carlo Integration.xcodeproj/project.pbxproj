@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4045882F2822E76200EB2FA8 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4045882E2822E76200EB2FA8 /* File.swift */; };
 		D214ED4E259E46DE00602C2C /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D214ED4D259E46DE00602C2C /* Tests_iOS.swift */; };
 		D214ED59259E46DE00602C2C /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D214ED58259E46DE00602C2C /* Tests_macOS.swift */; };
 		D214ED5B259E46DE00602C2C /* Monte_Carlo_IntegrationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D214ED32259E46DA00602C2C /* Monte_Carlo_IntegrationApp.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4045882E2822E76200EB2FA8 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		D214ED32259E46DA00602C2C /* Monte_Carlo_IntegrationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monte_Carlo_IntegrationApp.swift; sourceTree = "<group>"; };
 		D214ED33259E46DA00602C2C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D214ED34259E46DE00602C2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				D214ED85259E4FCC00602C2C /* DrawingView.swift */,
 				D214ED7C259E489700602C2C /* MonteCarloCircle.swift */,
 				D214ED73259E47A000602C2C /* BoundingBox.swift */,
+				4045882E2822E76200EB2FA8 /* File.swift */,
 				D214ED34259E46DE00602C2C /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -327,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D214ED74259E47A000602C2C /* BoundingBox.swift in Sources */,
+				4045882F2822E76200EB2FA8 /* File.swift in Sources */,
 				D214ED5D259E46DE00602C2C /* ContentView.swift in Sources */,
 				D214ED86259E4FCC00602C2C /* DrawingView.swift in Sources */,
 				D214ED5B259E46DE00602C2C /* Monte_Carlo_IntegrationApp.swift in Sources */,
